@@ -15,9 +15,6 @@ brew_packages:
   - zsh
   - zsh-completions
 
-  # Postgres.app
-  - "https://raw.githubusercontent.com/caskroom/homebrew-cask/cadccf54bab10b582f0881838672e766ded6d631/Casks/postgres.rb"
-
   # Heroku
   - heroku-toolbelt
   
@@ -30,6 +27,9 @@ cask_packages:
   # Browsers
   - google-chrome
 
+  # Postgres.app
+  - postgres
+  
   # Dev
   - java
   - iterm2
