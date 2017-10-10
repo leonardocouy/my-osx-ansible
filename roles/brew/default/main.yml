@@ -1,0 +1,44 @@
+---
+
+brew_packages:
+  # Git
+  - git
+
+  # Yarn
+  - yarn
+
+  # Python
+  - python3
+  - postgres
+
+  # ZSH
+  - zsh
+  - zsh-completions
+
+  # Postgres.app
+  - "https://raw.githubusercontent.com/caskroom/homebrew-cask/cadccf54bab10b582f0881838672e766ded6d631/Casks/postgres.rb"
+
+  # Common
+  - coreutils
+  - findutils
+  - gpg
+
+cask_packages:
+  # Browsers
+  - google-chrome
+
+  # Dev
+  - java
+  - iterm2
+  - visual-studio-code
+
+  # Productivity
+  - alfred
+
+  # Personal
+  - 1password
+
+  # Miscellaneous
+  - franz
+  - deezer
+  - beardedspice

@@ -1,0 +1,4 @@
+---
+- name: danbohea.homebrew
+- name: geerlingguy.mas
+- name: geerlingguy.dotfiles

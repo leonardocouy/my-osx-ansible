@@ -1,0 +1,28 @@
+---
+
+ - name: Add zsh to /etc/shells
+   lineinfile:
+    line: /usr/local/bin/zsh
+    dest: /etc/shells
+    state: present
+
+ - name: download oh-my-zsh
+   git:
+    repo: git://github.com/robbyrussell/oh-my-zsh.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+ - name: install oh-my-zsh
+   command: bash "{{ ansible_env.HOME }}/.oh-my-zsh/tools/install.sh"
+
+ - name: install zsh-autosuggestions
+   git:
+    repo: git://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+ - name: generate .zshrc
+   copy:
+    src: zshrc
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+
+ - name: change to zsh
+   command: chsh -s /usr/local/bin/zsh
