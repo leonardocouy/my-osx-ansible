@@ -18,6 +18,9 @@ brew_packages:
   # Postgres.app
   - "https://raw.githubusercontent.com/caskroom/homebrew-cask/cadccf54bab10b582f0881838672e766ded6d631/Casks/postgres.rb"
 
+  # Heroku
+  - heroku-toolbelt
+  
   # Common
   - coreutils
   - findutils

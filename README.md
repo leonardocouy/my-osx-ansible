@@ -1,66 +1,30 @@
-# macOS-ansible
-
-[![Build Status](https://travis-ci.org/gperdomor/macOS-ansible.svg?branch=master)](https://travis-ci.org/gperdomor/macOS-ansible)
+# my-osx-ansible
 
 ### Goal
-Automate system setup from a clean install of macOS 10.13
 
-...as much as we can.
+Automate my OS X environment setup
 
-### Why?
-Why not?... Also...
-- macOS updates are bad xD
-- Manual setup from a clean install takes too long
-- I run more than one system
-- Automization is good!
-- Help normalise systems between developers
+### Motivation
 
-### Requirements
+- No headaches on setup environment
+- Fast!
+- Easy to maintain
+- Clean Setup
 
-Ensure the following requirements are already installed and working on your local system:
+### How to use?
 
-- macOS 10.11, 10.12, 10.13
-- Signin to the App Store
-- Command Line Developer Tools or Xcode
-
-## Usage
-
-### Install dependencies
-
-A script is included to ensure certain dependencies are met:
-
-- Install pip and pexpect (if not already installed)
-- Install Ansible (if not already installed)
-- Download required Ansible Galaxy roles
-
-To execute this script run:
+Execute this script run:
 
 ```
-bash install-deps.sh
+source install.sh
 ```
 
 ### Configure
 
-Default variables can be overridden in config.yml.
-
-### Updating externally sourced roles
-
-If you decide to add/edit the roles listed in requirements.yml (highly encouraged!) then you'll need to make sure that those dependencies are in place before running your playbook. After editing requirements.yml you'll want to run the following command before running your playbook:
-
-```
-ansible-galaxy install -r requirements.yml --force
-```
+Each role has **default** folder, if you needs to change some configuration you may change role configuration.
 
 ### Run the Ansible playbook
 
-The primary Ansible playbook file is called mac.yml and can be run using the following command (asks for sudo password):
-
 ```
-ansible-playbook main.yml -K -i inventory
-```
-
-To run only certain tags (e.g. `xcode` and `homebrew`):
-
-```
-ansible-playbook main.yml -K -i inventory -t "xcode,homebrew"
+ansible-playbook setup.yml
 ```
