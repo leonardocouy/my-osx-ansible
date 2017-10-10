@@ -36,14 +36,14 @@ fi
 # Ensure pip has been installed
 if ! has pip; then
   awesome_echo "Installing pip..." "🙈"
-  easy_install pip
+  sudo python -m ensurepip
 fi
 
 # Ensure pip has been installed
 
 if ! has ansible; then
   awesome_echo "Installing ansible..." "🎃"
-  pip install ansible
+  sudo pip install ansible
 fi
 
 #### FINISH
