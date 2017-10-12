@@ -8,18 +8,18 @@
     executable: "{{ item.executable | default(omit) }}"
   with_items: "{{ pip_packages }}"
 
-- name: Install global Ruby gems.
-  gem:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
-    user_install: no
-    executable: "{{ item.executable | default(omit) }}"
-  become: true
-  with_items: "{{ gem_packages }}"
-
 - name: Import GPG keys
   command: "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
 
 - name: Install rvm
   shell: "\\curl -sSL https://get.rvm.io | bash -s stable --ruby"
+
+- name: Install ruby versions
+  shell: "rvm install {{ item }}"
+  with_items: "{{ ruby_versions }}"
+
+- name: Set default ruby version
+  shell: "rvm --default use {{ default_ruby_version }}"
+
+- name: Install bundler
+  shell: gem install bundler

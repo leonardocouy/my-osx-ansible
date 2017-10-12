@@ -3,5 +3,8 @@
 pip_packages:
   - { name: pipenv, executable: pip3 }
 
-gem_packages:
-  - { name: bundler }
+default_ruby_version: "2.3.1"
+
+ruby_versions:
+  - "2.3.1"
+  - "2.3.0"
