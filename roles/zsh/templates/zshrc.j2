@@ -14,7 +14,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 #plugins=(osx git rails ruby docker docker-compose bundler git-extras rbenv)
-plugins=(osx zsh-autosuggestions zsh-completions)
+plugins=(osx git rails ruby heroku rvm zsh-autosuggestions zsh-completions)
 
 # User configuration
 
@@ -25,3 +25,30 @@ source $ZSH/oh-my-zsh.sh
 # RVM
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+# Window/Tab title
+
+DISABLE_AUTO_TITLE="true"
+
+# $1 = type; 0 - both, 1 - tab, 2 - title
+# rest = text
+setTerminalText () {
+    local mode=$1 ; shift
+    echo -ne "\033]$mode;$@\007"
+}
+stt_both  () { setTerminalText 0 $@; }
+stt_tab   () { setTerminalText 1 $@; }
+stt_title () { setTerminalText 2 $@; }
+
+# Production mode
+
+tab-color() {
+    echo -ne "\033]6;1;bg;red;brightness;$1\a"
+    echo -ne "\033]6;1;bg;green;brightness;$2\a"
+    echo -ne "\033]6;1;bg;blue;brightness;$3\a"
+}
+
+prod_mode () { 
+    stt_tab "[PRODUÇÃO] $1"
+    tab-color
+}

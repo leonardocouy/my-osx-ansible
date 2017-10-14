@@ -9,3 +9,9 @@
   template: 
     src: gitignore_global.j2
     dest: ~/.gitignore_global
+
+- name: Create Workspace Folder
+  file: 
+   path: "{{ workspace_dir }}"
+   recurse: yes
+   state: directory

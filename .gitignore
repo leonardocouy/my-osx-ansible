@@ -3,5 +3,4 @@
 ansible.log
 config.local.yml
 ext_roles
--tasks
--roles
+.idea

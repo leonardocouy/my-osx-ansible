@@ -51,4 +51,4 @@ fi
 awesome_echo "PARTY FINISHED.." "😩"
 
 # Execute ansible
-#ansible-playbook -i ./ansible/localhost ./ansible/localhost.yml --ask-sudo-pass -vv
+ansible-playbook -i setup.yml --ask-sudo-pass -vv
