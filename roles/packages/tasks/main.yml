@@ -15,11 +15,11 @@
   shell: "\\curl -sSL https://get.rvm.io | bash -s stable --ruby"
 
 - name: Install ruby versions
-  shell: "rvm install {{ item }}"
+  shell: "~/.rvm/bin/rvm install {{ item }}"
   with_items: "{{ ruby_versions }}"
 
 - name: Set default ruby version
-  shell: "rvm --default use {{ default_ruby_version }}"
+  shell: "~/.rvm/bin/rvm --default use {{ default_ruby_version }}"
 
 - name: Install bundler
-  shell: gem install bundler
+  shell: "~/.rvm/bin/rvm gemset use global && gem install bundler"

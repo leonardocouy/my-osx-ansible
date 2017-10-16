@@ -34,9 +34,12 @@ cask_packages:
   - java
   - iterm2
   - visual-studio-code
+  - psequel
 
   # Productivity
   - alfred
+  - dash
+  - anvil
 
   # Personal
   - 1password
