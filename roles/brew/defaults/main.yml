@@ -9,7 +9,6 @@ brew_packages:
 
   # Python
   - python3
-  - postgres
 
   # ZSH
   - zsh
@@ -17,11 +16,18 @@ brew_packages:
 
   # Heroku
   - heroku-toolbelt
-  
+
+  # AWS EB
+  - aws-elasticbeanstalk
+
   # Common
   - coreutils
-  - findutils
-  - gpg
+  - findutil
+  - tmux
+
+  # Rbenv
+  - rbenv
+  - ruby-build
 
 cask_packages:
   # Browsers
@@ -29,20 +35,21 @@ cask_packages:
 
   # Postgres.app
   - postgres
-  
+
   # Dev
   - java
   - iterm2
-  - visual-studio-code
-  - psequel
+  - rubymine
+  - tableplus
+  - overmind
 
   # Productivity
   - alfred
   - dash
-  - anvil
 
   # Personal
   - 1password
+  - jdownloader
 
   # Miscellaneous
   - franz

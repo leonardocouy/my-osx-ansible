@@ -3,8 +3,9 @@
 pip_packages:
   - { name: pipenv, executable: pip3 }
 
-default_ruby_version: "2.3.1"
+default_ruby_version: "2.4.0"
 
 ruby_versions:
+  - "2.4.0"
   - "2.3.1"
   - "2.3.0"

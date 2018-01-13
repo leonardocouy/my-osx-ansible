@@ -8,18 +8,21 @@
     executable: "{{ item.executable | default(omit) }}"
   with_items: "{{ pip_packages }}"
 
-- name: Import GPG keys
-  command: "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
-
-- name: Install rvm
-  shell: "\\curl -sSL https://get.rvm.io | bash -s stable --ruby"
-
-- name: Install ruby versions
-  shell: "~/.rvm/bin/rvm install {{ item }}"
+- name: install ruby
+  shell: rbenv install "{{ item }}"
+  args:
+    executable: /bin/bash
+  ignore_errors: yes
   with_items: "{{ ruby_versions }}"
 
-- name: Set default ruby version
-  shell: "~/.rvm/bin/rvm --default use {{ default_ruby_version }}"
+- name: rehash
+  shell: rbenv rehash
 
-- name: Install bundler
-  shell: "~/.rvm/bin/rvm gemset use global && gem install bundler"
+- name: set global ruby version
+  shell: rbenv global "{{ default_ruby_version }}"
+
+- name: install bundler
+  gem:
+    name: bundler
+    state: latest
+    executable: ~/.rbenv/shims/gem
