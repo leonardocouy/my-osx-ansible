@@ -39,6 +39,8 @@ if ! has pip; then
   sudo python -m ensurepip
 fi
 
+sudo pip install --upgrade pip
+
 # Ensure pip has been installed
 
 if ! has ansible; then

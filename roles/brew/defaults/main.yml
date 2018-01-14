@@ -22,8 +22,11 @@ brew_packages:
 
   # Common
   - coreutils
-  - findutil
+  - findutils
   - tmux
+
+  # Dev
+  - overmind
 
   # Rbenv
   - rbenv
@@ -41,7 +44,6 @@ cask_packages:
   - iterm2
   - rubymine
   - tableplus
-  - overmind
 
   # Productivity
   - alfred
