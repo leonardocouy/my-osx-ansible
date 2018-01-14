@@ -49,3 +49,7 @@ prod_mode () {
     stt_tab "[PRODUÇÃO] $1"
     tab-color
 }
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
