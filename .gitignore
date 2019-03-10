@@ -4,3 +4,4 @@ ansible.log
 config.local.yml
 ext_roles
 .idea
+.history

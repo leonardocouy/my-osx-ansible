@@ -1,0 +1,38 @@
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'heroku/brew'
+
+brew 'git'
+brew 'python3'
+brew 'heroku'
+brew 'coreutils'
+brew 'findutils'
+brew 'rbenv'
+brew 'ruby-build'
+brew 'tmux'
+brew 'reattach-to-user-namespace'
+
+# Apps
+cask 'google-chrome'
+cask 'postgres'
+
+# Dev
+cask 'java'
+cask 'iterm2'
+cask 'tableplus'
+cask 'visual-studio-code'
+cask 'docker'
+cask 'karabiner-elements'
+
+# Productivity
+cask 'alfred'
+cask 'dash'
+
+# Personal
+cask '1password'
+cask 'jdownloader'
+
+# Miscellaneous
+cask 'franz'
+cask 'beardedspice'
+cask 'spectacle'

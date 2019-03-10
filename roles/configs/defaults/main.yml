@@ -1,5 +1,6 @@
 ---
 
-git_user_name: Leonardo Flores
-git_user_email: contato@leonardocouy.com
 workspace_dir: "~/workspace"
+dotfiles_path: "/tmp/dotfiles"
+vscode_sync_token: "TOKEN_ID"
+vscode_sync_gist: "GIST_ID"
