@@ -28,22 +28,6 @@
 - name: "Ruby | Set ruby {{ ruby_version }} as global"
   shell: "rbenv global {{ ruby_version }}"
 
-# - name: Ruby | rehash
-#   shell: rbenv rehash
-
-# - name: Install bundler for all ruby versions
-#   tags: [ruby, rbenv]
-#   shell: |
-#     RBENV_VERSION={{ item }} gem install bundler
-#   args:
-#     executable: /bin/bash
-#   with_items: "{{ ruby_versions }}"
-
-# - name: Ruby | set global ruby version
-#   shell: rbenv global "{{ default_ruby_version }}"
-
-
-
 - name: Node | Clone node version manager
   git:
     repo: "https://github.com/creationix/nvm.git"
@@ -65,37 +49,3 @@
   lineinfile:
     dest: ~/.bash_profile
     line: "{{ init_nvm }}"
-
-# - name: Ruby | install bundler
-#   gem:
-#     name: bundler
-#     state: latest
-#     executable: ~/.rbenv/shims/gem
-
-# - name: NVM | Create NVM_DIR
-#   file:
-#     path: ~/.nvm
-#     state: directory
-
-# - shell: ln -s (brew --prefix nvm)/nvm.sh ~/.nvm/nvm.sh
-#   args:
-#     creates: ~/.nvm/nvm.sh
-
-# - name: NVM | Enable NVM in .bash_profile
-#   blockinfile:
-#     path: "~/.bash_profile"
-#     marker: "# {mark} NVM Setting #"
-#     content: |
-#       set -x NVM_DIR ~/.nvm
-#       source ~/.bash_profile
-
-# - name: Source the profile in shrc shrc_path
-#   shell: "source /usr/local/opt/nvm/nvm.sh"
-#   args:
-#     executable: /bin/bash
-
-# - name: NVM | Install node
-#   shell: source ~/.bash_profile && nvm install node
-
-# - name: NVM | Install yarn
-#   shell: source ~/.bash_profile && npm install -g yarn
