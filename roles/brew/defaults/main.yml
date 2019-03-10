@@ -10,10 +10,6 @@ brew_packages:
   # Python
   - python3
 
-  # ZSH
-  - zsh
-  - zsh-completions
-
   # Heroku
   - heroku-toolbelt
 

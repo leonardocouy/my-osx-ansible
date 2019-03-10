@@ -1,7 +1,0 @@
----
-
-pip_packages:
-  - { name: pipenv, executable: pip3 }
-
-gem_packages:
-  - { name: bundler }
