@@ -4,5 +4,5 @@
   roles:
     - { role: configs }
     - { role: brew }
-    - { role: zsh }
+    # - { role: zsh }
     - { role: packages }

@@ -1,28 +1,101 @@
 ---
 
-- name: Install global Pip packages
-  pip:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
-    executable: "{{ item.executable | default(omit) }}"
-  with_items: "{{ pip_packages }}"
 
-- name: install ruby
-  shell: rbenv install "{{ item }}"
-  args:
-    executable: /bin/bash
+- name: Ruby | Add rbenv to .bashrc
+  lineinfile:
+    dest: ~/.bash_profile
+    line: 'eval "$(rbenv init -)"'
+
+- name: Ruby | Install rbenv default gems plugin
+  git:
+    repo: "https://github.com/rbenv/rbenv-default-gems.git"
+    dest: "{{ rbenv_home }}/plugins/rbenv-default-gems"
+    accept_hostkey: yes
+
+- name: Ruby | Add default gems
+  template:
+    src: default-gems.j2
+    dest: "{{ rbenv_home }}/default-gems"
+
+- name: Ruby | check if target ruby version is installed
+  command: "rbenv version"
+  register: current_ruby_version
+
+- name: "Ruby | Install ruby {{ ruby_version }}"
+  shell: "rbenv install {{ ruby_version }}"
+  when: ruby_version not in current_ruby_version.stdout
+
+- name: "Ruby | Set ruby {{ ruby_version }} as global"
+  shell: "rbenv global {{ ruby_version }}"
+
+# - name: Ruby | rehash
+#   shell: rbenv rehash
+
+# - name: Install bundler for all ruby versions
+#   tags: [ruby, rbenv]
+#   shell: |
+#     RBENV_VERSION={{ item }} gem install bundler
+#   args:
+#     executable: /bin/bash
+#   with_items: "{{ ruby_versions }}"
+
+# - name: Ruby | set global ruby version
+#   shell: rbenv global "{{ default_ruby_version }}"
+
+
+
+- name: Node | Clone node version manager
+  git:
+    repo: "https://github.com/creationix/nvm.git"
+    dest: "{{ nvm_home }}"
+    accept_hostkey: yes
   ignore_errors: yes
-  with_items: "{{ ruby_versions }}"
 
-- name: rehash
-  shell: rbenv rehash
+- name: Node | Add default packages
+  template:
+    src: default-packages.j2
+    dest: "{{ nvm_home }}/default-packages"
 
-- name: set global ruby version
-  shell: rbenv global "{{ default_ruby_version }}"
+- name: Node | Install latest node version
+  shell: "{{ init_nvm }} && nvm install node"
+  register: nvm_result
+  changed_when: "'is already installed' not in nvm_result.stderr"
 
-- name: install bundler
-  gem:
-    name: bundler
-    state: latest
-    executable: ~/.rbenv/shims/gem
+- name: NVM | Enable NVM in .bash_profile
+  lineinfile:
+    dest: ~/.bash_profile
+    line: "{{ init_nvm }}"
+
+# - name: Ruby | install bundler
+#   gem:
+#     name: bundler
+#     state: latest
+#     executable: ~/.rbenv/shims/gem
+
+# - name: NVM | Create NVM_DIR
+#   file:
+#     path: ~/.nvm
+#     state: directory
+
+# - shell: ln -s (brew --prefix nvm)/nvm.sh ~/.nvm/nvm.sh
+#   args:
+#     creates: ~/.nvm/nvm.sh
+
+# - name: NVM | Enable NVM in .bash_profile
+#   blockinfile:
+#     path: "~/.bash_profile"
+#     marker: "# {mark} NVM Setting #"
+#     content: |
+#       set -x NVM_DIR ~/.nvm
+#       source ~/.bash_profile
+
+# - name: Source the profile in shrc shrc_path
+#   shell: "source /usr/local/opt/nvm/nvm.sh"
+#   args:
+#     executable: /bin/bash
+
+# - name: NVM | Install node
+#   shell: source ~/.bash_profile && nvm install node
+
+# - name: NVM | Install yarn
+#   shell: source ~/.bash_profile && npm install -g yarn

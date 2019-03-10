@@ -1,17 +1,46 @@
 ---
 
-- name: copy gitconfig
-  template: 
-    src: gitconfig.j2 
-    dest: "~/.gitconfig"
+- name: clone my dotfiles
+  git:
+    repo: https://github.com/leonardocouy/dotfiles
+    dest: "{{ dotfiles_path }}"
+    version: "update-dotfiles"
 
-- name: copy gitignore_global
-  template: 
-    src: gitignore_global.j2
+# - name: copy bashrc to ~
+#   copy:
+#     src: "{{ dotfiles_path }}/.bashrc"
+#     dest: ~/.bashrc
+
+# - name: copy bash_profile to ~
+#   copy:
+#     src: "{{ dotfiles_path }}/.bash_profile"
+#     dest: ~/.bash_profile
+
+# - name: copy bash profile presets to ~
+#   synchronize:
+#     src: "{{ dotfiles_path }}/.presets"
+#     dest: ~/
+#     recursive: yes
+
+- name: copy gitconfig to ~
+  copy:
+    src: "{{ dotfiles_path }}/.gitconfig"
+    dest: ~/.gitconfig
+
+
+- name: copy gitignore_global to ~
+  copy:
+    src: "{{ dotfiles_path }}/.gitignore-global"
     dest: ~/.gitignore_global
 
+- name: copy tmux conf to ~
+  copy:
+    src: "{{ dotfiles_path }}/.tmux.conf"
+    dest: ~/.tmux.conf
+
+
 - name: Create Workspace Folder
-  file: 
+  file:
    path: "{{ workspace_dir }}"
    recurse: yes
    state: directory
