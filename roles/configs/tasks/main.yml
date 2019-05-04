@@ -6,21 +6,8 @@
     dest: "{{ dotfiles_path }}"
     version: "update-dotfiles"
 
-- name: copy bashrc to ~
-  copy:
-    src: "{{ dotfiles_path }}/.bashrc"
-    dest: ~/.bashrc
-
-- name: copy bash_profile to ~
-  copy:
-    src: "{{ dotfiles_path }}/.bash_profile"
-    dest: ~/.bash_profile
-
-- name: copy bash profile presets to ~
-  synchronize:
-    src: "{{ dotfiles_path }}/.presets"
-    dest: ~/
-    recursive: yes
+- name: execute dotfiles setup.sh
+  shell: "{{ dotfiles_path }}/setup.sh"
 
 - name: copy gitconfig to ~
   copy:
