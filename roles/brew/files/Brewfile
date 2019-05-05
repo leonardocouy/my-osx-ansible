@@ -24,6 +24,7 @@ cask 'visual-studio-code'
 cask 'rubymine'
 cask 'docker'
 cask 'karabiner-elements'
+cask 'sublime-merge'
 
 # Productivity
 cask 'alfred'
