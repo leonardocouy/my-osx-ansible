@@ -1,6 +1,6 @@
 ---
 
 workspace_dir: "~/workspace"
-dotfiles_path: "/tmp/dotfiles"
 vscode_sync_token: "TOKEN_ID"
-vscode_sync_gist: "GIST_ID"
+vscode_sync_gist: "GIST_ID"dotfiles_path: "~/workspace/dotfiles"
+dotfiles_path: "~/workspace/dotfiles"

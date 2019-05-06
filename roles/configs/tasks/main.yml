@@ -1,5 +1,11 @@
 ---
 
+- name: Create Workspace Folder
+  file:
+   path: "{{ workspace_dir }}"
+   recurse: yes
+   state: directory
+
 - name: clone my dotfiles
   git:
     repo: https://github.com/leonardocouy/dotfiles
@@ -7,6 +13,8 @@
 
 - name: execute dotfiles setup.sh
   shell: "{{ dotfiles_path }}/setup.sh"
+  args:
+    chdir: "{{ dotfiles_path }}"
 
 - name: "Ensure ~/.config/karabiner directory present"
   file:
@@ -49,12 +57,6 @@
       - type: "set"
         path: "sync.gist"
         value: "{{ vscode_sync_gist }}"
-
-- name: Create Workspace Folder
-  file:
-   path: "{{ workspace_dir }}"
-   recurse: yes
-   state: directory
 
 - name: Setup MacOS settings
   shell: "{{ dotfiles_path }}/.macos"
