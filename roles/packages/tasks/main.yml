@@ -9,7 +9,7 @@
   git:
     repo: "https://github.com/rbenv/rbenv-default-gems.git"
     dest: "{{ rbenv_home }}/plugins/rbenv-default-gems"
-    accept_hostkey: yes
+    accept_hostkey: true
 
 - name: Ruby | Add default gems
   template:
@@ -31,8 +31,8 @@
   git:
     repo: "https://github.com/creationix/nvm.git"
     dest: "{{ nvm_home }}"
-    accept_hostkey: yes
-  ignore_errors: yes
+    accept_hostkey: true
+  ignore_errors: true
 
 - name: Node | Add default packages
   template:

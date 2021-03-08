@@ -2,9 +2,9 @@
 
 - name: Create Workspace Folder
   file:
-   path: "{{ workspace_dir }}"
-   recurse: yes
-   state: directory
+    path: "{{ workspace_dir }}"
+    recurse: true
+    state: directory
 
 - name: clone my dotfiles
   git:

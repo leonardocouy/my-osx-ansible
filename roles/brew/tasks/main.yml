@@ -3,7 +3,7 @@
 - name: Ensure homebrew is updated
   homebrew:
     state: latest
-    update_homebrew: yes
+    update_homebrew: true
 
 - name: Tap Homebrew Bundle
   homebrew_tap:
