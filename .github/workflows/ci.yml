@@ -28,7 +28,6 @@ jobs:
       - name: Lint code.
         run: |
           yamllint .
-          ansible-lint
   integration:
     name: Integration
     runs-on: ${{ matrix.os }}
