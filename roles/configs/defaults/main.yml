@@ -2,5 +2,5 @@
 
 workspace_dir: "~/workspace"
 vscode_sync_token: "TOKEN_ID"
-vscode_sync_gist: "GIST_ID"dotfiles_path: "~/workspace/dotfiles"
+vscode_sync_gist: "GIST_ID"
 dotfiles_path: "~/workspace/dotfiles"
