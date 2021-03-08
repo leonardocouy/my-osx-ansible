@@ -60,3 +60,12 @@
 
 - name: Setup MacOS settings
   shell: "{{ dotfiles_path }}/.macos"
+
+- name: Check for oh-my-zsh
+  stat:
+    path: ~/.oh-my-zsh
+  register: stat_oh_my_zsh_result
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: not stat_oh_my_zsh_result.stat.exists
