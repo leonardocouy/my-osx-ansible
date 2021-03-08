@@ -1,6 +1,7 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'heroku/brew'
+tap "isen-ng/dotnet-sdk-versions"
 
 brew 'git'
 brew 'python3'
@@ -25,6 +26,7 @@ cask 'rider'
 cask 'docker'
 cask 'karabiner-elements'
 cask 'sublime-merge'
+cask 'dotnet-sdk'
 
 # Productivity
 cask 'alfred'
