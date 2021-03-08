@@ -14,14 +14,14 @@ brew 'reattach-to-user-namespace'
 
 # Apps
 cask 'google-chrome'
-cask 'postgres'
 
 # Dev
 cask 'java'
 cask 'iterm2'
-cask 'tableplus'
 cask 'visual-studio-code'
 cask 'rubymine'
+cask 'webstorm'
+cask 'rider'
 cask 'docker'
 cask 'karabiner-elements'
 cask 'sublime-merge'
@@ -32,11 +32,11 @@ cask 'dash'
 
 # Personal
 cask '1password'
-cask 'jdownloader'
+cask 'setapp'
+cask 'slack'
+cask 'notion'
 
 # Miscellaneous
-cask 'franz'
-cask 'beardedspice'
 cask 'spectacle'
 cask 'insomnia'
 cask 'spotify'
