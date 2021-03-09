@@ -1,8 +1,8 @@
 tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'heroku/brew'
-tap "isen-ng/dotnet-sdk-versions"
 tap 'homebrew/cask-versions'
+tap "adoptopenjdk/openjdk"
 
 brew 'git'
 brew 'python3'
