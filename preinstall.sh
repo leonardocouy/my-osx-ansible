@@ -1,4 +1,5 @@
 #!/bin/sh
+export TERM=xterm-256color
 
 set -e
 set -u

@@ -1,5 +1,5 @@
 skip_list:
   - '401'
-  - no-changed-when
-  - package-latest
+  - '301'
+  - '403'
 use_default_rules: true
