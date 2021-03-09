@@ -70,6 +70,3 @@
 - name: Install oh-my-zsh
   command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not stat_oh_my_zsh_result.stat.exists
-
-- name: Install dotnet-ef
-  command: dotnet tool update --global dotnet-ef

@@ -19,7 +19,6 @@ cask 'google-chrome'
 
 # Dev
 cask 'adoptopenjdk'
-cask 'dotnet-sdk'
 cask 'iterm2'
 cask 'visual-studio-code'
 cask 'rubymine'
