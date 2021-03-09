@@ -53,4 +53,4 @@ fi
 awesome_echo "PARTY FINISHED.." "😩"
 
 # Execute ansible
-ansible-playbook setup.yml --ask-become-pass
+ansible-playbook setup.yml -i inventory --ask-become-pass

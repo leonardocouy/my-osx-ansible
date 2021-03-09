@@ -1,7 +1,11 @@
 ---
 - hosts: 127.0.0.1
   connection: local
-  roles:
-    - {role: brew}
-    - {role: configs}
-    - {role: packages}
+
+  vars_files:
+    - default.config.yml
+
+  tasks:
+    - include_tasks: tasks/install-apps.yml
+    - include_tasks: tasks/config.yml
+    - include_tasks: tasks/install-packages.yml

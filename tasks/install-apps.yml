@@ -10,10 +10,10 @@
     name: "homebrew/bundle"
 
 - name: brew bundle
-  command: brew bundle --file={{ role_path }}/files/Brewfile
+  command: brew bundle --file=files/Brewfile
 
 - name: brew bundle clean
-  command: brew bundle cleanup --file={{ role_path }}/files/Brewfile
+  command: brew bundle cleanup --file=files/Brewfile
 
 - name: Cleanup homebrew packages
   shell: brew cleanup
