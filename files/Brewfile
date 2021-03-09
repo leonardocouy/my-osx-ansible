@@ -1,7 +1,8 @@
-tap 'caskroom/cask'
+tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'heroku/brew'
 tap "isen-ng/dotnet-sdk-versions"
+tap 'homebrew/cask-versions'
 
 brew 'git'
 brew 'python3'
