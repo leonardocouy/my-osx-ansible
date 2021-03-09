@@ -1,7 +1,5 @@
 ---
-
-name: playbook tests
-
+name: CI
 'on':
   pull_request:
   push:
@@ -11,19 +9,51 @@ name: playbook tests
     - cron: "0 5 * * 4"
 
 jobs:
-  tests:
-    name: Tests
-    runs-on: macos-latest
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+
+      - name: Lint playbook
+        uses: ansible/ansible-lint-action@master
+        with:
+          targets: setup.yml
+          override-deps: ""
+          args: ""
+  integration:
+    name: Integration
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
       - name: Prepare
         run: |
           sudo ./tests/uninstall-homebrew.sh
           sudo rm -rf /Applications/Firefox.app
           sudo rm -rf /Applications/Google\ Chrome.app
           sudo pip3 install ansible
-          cp test/ansible.cfg ./ansible.cfg
-          cp test/inventory ./inventory
+          cp tests/ansible.cfg ./ansible.cfg
+          cp tests/inventory ./inventory
 
       - name: Syntax check
         run: ansible-playbook setup.yml --syntax-check
