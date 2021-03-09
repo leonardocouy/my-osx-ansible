@@ -18,7 +18,8 @@ brew 'reattach-to-user-namespace'
 cask 'google-chrome'
 
 # Dev
-cask 'java'
+cask 'adoptopenjdk'
+cask 'dotnet-sdk'
 cask 'iterm2'
 cask 'visual-studio-code'
 cask 'rubymine'
@@ -27,7 +28,6 @@ cask 'rider'
 cask 'docker'
 cask 'karabiner-elements'
 cask 'sublime-merge'
-cask 'dotnet-sdk'
 
 # Productivity
 cask 'alfred'
