@@ -15,17 +15,18 @@
   template:
     src: templates/default-gems.j2
     dest: "{{ rbenv_home }}/default-gems"
+    mode: 0755
 
 - name: Ruby | check if target ruby version is installed
   command: "rbenv version"
   register: current_ruby_version
 
 - name: "Ruby | Install ruby {{ ruby_version }}"
-  shell: "rbenv install {{ ruby_version }}"
+  command: "rbenv install {{ ruby_version }}"
   when: ruby_version not in current_ruby_version.stdout
 
 - name: "Ruby | Set ruby {{ ruby_version }} as global"
-  shell: "rbenv global {{ ruby_version }}"
+  command: "rbenv global {{ ruby_version }}"
 
 - name: Node | Clone node version manager
   git:
@@ -38,6 +39,7 @@
   template:
     src: templates/default-packages.j2
     dest: "{{ nvm_home }}/default-packages"
+    mode: 0755
 
 - name: Node | Install latest node version
   shell: "{{ init_nvm }} && nvm install node"

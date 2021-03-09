@@ -16,4 +16,4 @@
   command: brew bundle cleanup --file=files/Brewfile
 
 - name: Cleanup homebrew packages
-  shell: brew cleanup
+  command: brew cleanup

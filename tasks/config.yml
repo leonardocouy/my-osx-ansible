@@ -12,19 +12,19 @@
     dest: "{{ dotfiles_path }}"
 
 - name: execute dotfiles setup.sh
-  shell: "{{ dotfiles_path }}/setup.sh"
-  args:
-    chdir: "{{ dotfiles_path }}"
+  command: "{{ dotfiles_path }}/setup.sh"
 
 - name: "Ensure ~/.config/karabiner directory present"
   file:
     path: ~/.config/karabiner
     state: directory
+    mode: 0755
 
 - name: "Copy karabiner.json to ~/.config/karabiner"
   copy:
     src: "{{ dotfiles_path }}/karabiner.json"
     dest: ~/.config/karabiner/karabiner.json
+    mode: 0755
 
 - name: Ensure that Spectacle directory exists
   file:
@@ -36,6 +36,7 @@
   copy:
     src: "{{ dotfiles_path }}/spectacle.json"
     dest: "~/Library/Application\ Support/Spectacle/Shortcuts.json"
+    mode: 0755
 
 - name: Install VSCode Sync Extesnion
   command: code --install-extension Shan.code-settings-sync
@@ -59,7 +60,7 @@
         value: "{{ vscode_sync_gist }}"
 
 - name: Setup MacOS settings
-  shell: "{{ dotfiles_path }}/.macos"
+  command: "{{ dotfiles_path }}/.macos"
 
 - name: Check for oh-my-zsh
   stat:
@@ -67,8 +68,8 @@
   register: stat_oh_my_zsh_result
 
 - name: Install oh-my-zsh
-  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not stat_oh_my_zsh_result.stat.exists
 
 - name: Install dotnet-ef
-  shell: dotnet tool update --global dotnet-ef
+  command: dotnet tool update --global dotnet-ef
