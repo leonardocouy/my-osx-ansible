@@ -1,5 +1,8 @@
 ---
 
+- name: debug through ansible.env
+  debug: var=ansible_env.HOME
+
 - name: Ensure homebrew is updated
   homebrew:
     state: latest
