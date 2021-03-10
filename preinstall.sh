@@ -46,7 +46,7 @@ sudo pip install --upgrade pip
 
 if ! has ansible; then
   awesome_echo "Installing ansible..." "🎃"
-  sudo pip install ansible
+  brew install ansible
 fi
 
 #### FINISH
