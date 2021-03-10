@@ -1,10 +1,5 @@
 ---
 
-- name: Ruby | Add rbenv to .bashrc
-  lineinfile:
-    dest: ~/.bash_profile
-    line: 'eval "$(rbenv init -)"'
-
 - name: Ruby | Install rbenv default gems plugin
   git:
     repo: "https://github.com/rbenv/rbenv-default-gems.git"
@@ -45,8 +40,3 @@
   shell: "{{ init_nvm }} && nvm install node"
   register: nvm_result
   changed_when: "'is already installed' not in nvm_result.stderr"
-
-- name: NVM | Enable NVM in .bash_profile
-  lineinfile:
-    dest: ~/.bash_profile
-    line: "{{ init_nvm }}"
